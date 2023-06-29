@@ -50,11 +50,11 @@ class CustomValidator(Validator):
 
 def validate_register_user(data):
     schema = {
-        'email': {'type': 'string', 'is_email': True, 'required': True},
-        'first_name': {'type': 'string', 'required': True},
-        'last_name': {'type': 'string', 'required': True},
-        'avatar': {'type': 'string', 'is_url': True, 'required': True},
-        'password': {'type': 'string', 'is_password': True, 'required': True},
+        "email": {'type': 'string', 'is_email': True, 'required': True},
+        "first_name": {'type': 'string', 'required': True},
+        "last_name": {'type': 'string', 'required': True},
+        "avatar": {'type': 'string', 'is_url': True, 'required': True},
+        "password": {'type': 'string', 'is_password': True, 'required': True},
     }
 
     v = CustomValidator(schema)

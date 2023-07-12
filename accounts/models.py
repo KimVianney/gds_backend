@@ -31,8 +31,8 @@ class User(AbstractUser):
         for field in ['first_name', 'last_name', 'avatar']:
             if field in data:
                 setattr(self, field, data[field])
-            self.save()
-            return self
+        self.save()
+        return self
 
     @property
     def get_access_token(self):

@@ -47,10 +47,7 @@ def update(request):
         return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
     user = request.user.update(request.data)
-    print(request.data)
-    print(user.last_name)
     serializer = UserSerializer(user)
-    # serializer = UserSerializer(request.user.update(request.data))
     
     response = {'message': 'Done!', 'user': serializer.data}
     return Response(response, status=status.HTTP_200_OK)

@@ -58,7 +58,7 @@ def get_image_upload_results(pk):
     image_urls = image_upload.images
     print(len(image_urls))
     
-    file_utils.download_images(urls=image_urls, uploads_dir=settings.IMAGE_UPLOADS)
+    file_utils.download_images(image_urls, settings.IMAGE_UPLOADS)
 
     images = glob(f"{settings.IMAGE_UPLOADS}/*.jpg")
     for i, image in enumerate(images):
@@ -67,12 +67,12 @@ def get_image_upload_results(pk):
        
 
         # Upload to cloud and delete image locally
-        # res_filepath = f"{settings.RESULT_IMAGE_UPLOADS}/{i}.jpg"
-        res_filepath = f"{settings.RESULT_IMAGE_UPLOADS}\{i}.jpg"
+        res_filepath = f"{settings.RESULT_IMAGE_UPLOADS}/{i}.jpg"
+        # res_filepath = f"{settings.RESULT_IMAGE_UPLOADS}\{i}.jpg"
         result_uploads = utils.imsave(process_image(image), res_filepath)
         result_uploads = file_utils.upload_results(settings.RESULT_IMAGE_UPLOADS)
 
-        file_utils.delete_uploads(uploads_dir=settings.IMAGE_UPLOADS)
+        # file_utils.delete_uploads(uploads_dir=settings.IMAGE_UPLOADS)
          
         image_result = {
             "image": image_urls[i],
@@ -80,6 +80,8 @@ def get_image_upload_results(pk):
             "results": result_description,
             "result_image": result_uploads
         }
+
+        file_utils.delete_uploads(uploads_dir=settings.IMAGE_UPLOADS)
         
         results.append(image_result)
     

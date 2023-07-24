@@ -24,7 +24,7 @@
 
 - Install dependencies to be used by your instance, such as postgresql, nginx etc
 
-- Switch to the backend directory `cd raid_be`
+- Switch to the backend directory `cd gds_be`
 
 - Create a virtual environment `python3 -m venv venv` and activate it `. venv/bin/activate`
 
